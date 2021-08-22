@@ -7,7 +7,6 @@ class Restaurant:
         self.name = name
         self.location = location
 
-
 class Customer:
     def __init__(self, name: str, location: Location) -> None:
         self.name = name
@@ -26,8 +25,6 @@ class Order:
 
 def generate_graph(start_position: Location, orders: Iterable[Order]) -> Graph:
     g = Graph()
-    start = Node('START', data=StartLocation(start_position))
-    g.add_node(start)
 
     for order in orders:
         g.add_node(Node(id=order.customer.name, data=order.customer))
@@ -38,7 +35,14 @@ def generate_graph(start_position: Location, orders: Iterable[Order]) -> Graph:
             if n1 is not n2:
                 print(n1.data == n2.data)
                 weight = travel_time(n1.data.location, n2.data.location, 20)
-                g.add_edge(n1, n2, weight)
+                g.add_edge(n1, n2, weight, bidirectional=True)
+
+    start = Node('START', data=StartLocation(start_position))
+    g.add_node(start)
+
+    for n in g.nodes.values():
+        if isinstance(n.data, Restaurant):
+            g.add_edge(start, n, bidirectional=True)
 
     return g
 
