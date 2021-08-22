@@ -1,14 +1,8 @@
-from graph import Node, DirectedGraph
+from graph import DirectedGraph, Node
+from lib import Location, haversine_distance
 
-g = DirectedGraph()
-s = Node('S')
-r1 = Node('R1')
-r2 = Node('R2')
-c1 = Node('C1')
-c2 = Node('C2')
+start_location = Location(75.40322081327923, 13.222724042514256)
+end_location = Location(74.77418178783742, 13.113723901464716)
 
-g.add_multiple_nodes([s,r1,r2,c1,c2])
-g.add_edge(r1,r2)
 
-print(g)
-print(g.edges)
+print(haversine_distance(start_location, end_location))
