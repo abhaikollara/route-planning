@@ -3,13 +3,13 @@ from collections import namedtuple
 Edge = namedtuple("Edge", ["node", "weight"])
 
 
-class DirectedGraph:
+class Graph:
     def __init__(self, nodes={}) -> None:
         self.nodes = nodes
         self.edges = {}
 
     def add_node(self, node) -> None:
-        self.nodes[node.name] = node
+        self.nodes[node.id] = node
 
     def add_multiple_nodes(self, node_list) -> None:
         for n in node_list:
@@ -39,11 +39,12 @@ class DirectedGraph:
 
 
 class Node:
-    def __init__(self, name: str) -> None:
-        self.name = name
+    def __init__(self, id: str, data=None) -> None:
+        self.id = id
+        self.data = data
 
     def __repr__(self) -> str:
-        return f"Node({self.name})"
+        return f"Node({self.id})"
 
     def __str__(self) -> str:
-        return f"Node({self.name})"
+        return f"Node({self.id})"
