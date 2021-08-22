@@ -2,6 +2,8 @@
 ## Problem statement
 Imagine a delivery executive called Aman standing idle in Koramangala somewhere when suddenly his phone rings and notifies that he’s just been assigned a batch of 2 orders meant to be delivered in the shortest possible timeframe.
 
+![alt text](https://github.com/abhaikollara/route-planning/blob/master/image.jpg?raw=true)
+
 All the circles in the figure above represent geo-locations :
 - C1​ : Consumer 1
 - C2​ : Consumer 2
@@ -14,3 +16,16 @@ _For the sake of simplicity, you can assume that Aman, R1 and R2 were informed a
 
 ## Solution(incomplete)
 The problem is best represented as an weighted undirected graph where the locations are the nodes, edges being the roads and travel time is the weights.
+
+- The locations will be represented in coordinates
+- The distance and time to travel will be calculated using Haversine formula as suggested
+- The actual locations are assumed to be inputs
+
+## Code
+The example code is in `main.py`. Run using
+
+```
+python3 main.py
+```
+
+No external dependencies other than Python3 required.
