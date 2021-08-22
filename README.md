@@ -2,7 +2,7 @@
 ## Problem statement
 Imagine a delivery executive called Aman standing idle in Koramangala somewhere when suddenly his phone rings and notifies that he’s just been assigned a batch of 2 orders meant to be delivered in the shortest possible timeframe.
 
-![alt text](https://github.com/abhaikollara/route-planning/blob/master/image.jpg?raw=true)
+![route graph](https://github.com/abhaikollara/route-planning/blob/master/image.jpg?raw=true)
 
 All the circles in the figure above represent geo-locations :
 - C1​ : Consumer 1
