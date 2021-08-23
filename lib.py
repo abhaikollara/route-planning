@@ -71,7 +71,6 @@ def find_optimal_delivery_path(start_position: Location, order_list: Iterable[Or
 
     valid_paths = generate_valid_paths(g)
     shortest_path = sorted(valid_paths, key=g.path_cost)[0]
-    pprint([(p, g.path_cost(p)) for p in valid_paths])
 
     return [n.data["location"] for n in shortest_path]
 
