@@ -1,7 +1,18 @@
 from collections import namedtuple
+from typing import Iterable
 
 Edge = namedtuple("Edge", ["node", "weight"])
 
+class Node:
+    def __init__(self, id: str, data=None) -> None:
+        self.id = id
+        self.data = data # Any data associated with the node
+
+    def __repr__(self) -> str:
+        return f"Node({self.id})"
+
+    def __str__(self) -> str:
+        return f"Node({self.id})"
 
 class Graph:
     def __init__(self, nodes={}) -> None:
@@ -31,20 +42,21 @@ class Graph:
         self.add_directed_edge(n1, n2)
         self.add_directed_edge(n2, n1)
 
+    def path_cost(self, nodes: Iterable[Node]) -> float:
+        total_cost = 0.0
+        for i, n in enumerate(nodes[1:]):
+            edges = self.edges.get(n)
+            if edges:
+                for e in edges:
+                    if e.node == nodes[i-1]:
+                        total_cost += e.weight
+        
+        return total_cost
+
+
     def __repr__(self) -> str:
         return f"DirectedGraph({repr(self.nodes)})"
 
     def __str__(self) -> str:
         return f"DirectedGraph({repr(self.nodes)})"
 
-
-class Node:
-    def __init__(self, id: str, data=None) -> None:
-        self.id = id
-        self.data = data # Any data associated with the node
-
-    def __repr__(self) -> str:
-        return f"Node({self.id})"
-
-    def __str__(self) -> str:
-        return f"Node({self.id})"

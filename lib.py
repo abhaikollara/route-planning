@@ -1,6 +1,7 @@
 from collections.abc import Iterable
 from location import Location, travel_time
 from graph import Graph, Node
+from itertools import permutations
 
 class Restaurant:
     def __init__(self, name: str, location: Location) -> None:
@@ -37,7 +38,7 @@ def generate_graph(start_position: Location, orders: Iterable[Order]) -> Graph:
                 weight = travel_time(n1.data['location'], n2.data['location'], 20)
                 g.add_edge(n1, n2, weight, bidirectional=True)
 
-    start = Node('START', data={'location':start_position})
+    start = Node('START', data={'location':start_position, 'type':'start'})
     g.add_node(start)
 
     for n in g.nodes.values():
@@ -51,9 +52,33 @@ def generate_graph(start_position: Location, orders: Iterable[Order]) -> Graph:
 def find_optimal_delivery_path(start_position: Location, order_list: Iterable[Order]) -> Iterable[Location]:
     g = generate_graph(start_position, order_list)
 
-    # paths = generate_paths(g)
+    valid_paths = generate_valid_paths(g)
+    shortest_path = sorted(valid_paths, key=g.path_cost)[0]
 
-    # Generate all possible valid paths here and check the sum of weights ?
-    # Minimum spanning tree here ?
+    return [n.data['location'] for n in shortest_path]
 
-    return g
+def generate_valid_paths(graph):
+    # We start from start location and generate all permutations of node visitation
+    nodes = [n for n in graph.nodes.values()]
+
+    valid_paths = [] # This will contain only the paths that satisfy the prerequiste condition
+                     # i.e restaurant must be visited before customer
+
+    for path in permutations(nodes):
+        if is_valid_path(path):
+            valid_paths.append(path)
+    
+    return valid_paths
+
+def is_valid_path(path):
+    visited = set() # Keep track of visited nodes to see if a prerequiste node has been visited
+    if path[0].data.get('type') != 'start':
+        return False
+
+    for n in path:
+        visited.add(n)
+        prereq = n.data.get('pre_req')
+        if prereq and prereq not in visited:
+            return False
+    
+    return True
