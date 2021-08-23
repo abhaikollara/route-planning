@@ -49,6 +49,7 @@ def generate_graph(start_position: Location, orders: Iterable[Order]) -> Graph:
 def find_optimal_delivery_path(start_position: Location, order_list: Iterable[Order]) -> Iterable[Location]:
     g = generate_graph(start_position, order_list)
 
-    # Generate the minimum spanning tree here ?
+    # Generate all possible valid paths here and check the sum of weights ?
+    # Minimum spanning tree here ?
 
     return g

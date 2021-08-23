@@ -14,7 +14,7 @@ Since there are multiple ways to go about delivering these orders, your task is 
 
 _For the sake of simplicity, you can assume that Aman, R1 and R2 were informed about these orders at the exact same time and all of them confirm on doing it immediately. Also, for travel time between any two geo-locations, you can use the haversine formula with an average speed of 20km/hr ( basically ignore actual road distance or confirmation delays everywhere although the real world is hardly that simple ;)_
 
-## Solution(incomplete)
+## Solution [WIP]
 The problem is best represented as an weighted undirected graph where the locations are the nodes, edges being the roads and travel time is the weights.
 
 - The locations will be represented in coordinates
