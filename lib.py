@@ -65,9 +65,7 @@ def generate_graph(start_position: Location, orders: Iterable[Order]) -> Graph:
 
 
 # This should be implement the actual solution
-def find_optimal_delivery_path(
-    start_position: Location, order_list: Iterable[Order]
-) -> Iterable[Location]:
+def find_optimal_delivery_path(start_position: Location, order_list: Iterable[Order]) -> Iterable[Location]:
     g = generate_graph(start_position, order_list)
 
     valid_paths = generate_valid_paths(g)
@@ -80,9 +78,7 @@ def generate_valid_paths(graph):
     # We start from start location and generate all permutations of node visitation
     nodes = [n for n in graph.nodes.values()]
 
-    valid_paths = (
-        []
-    )  # This will contain only the paths that satisfy the prerequiste condition
+    valid_paths = []  # This will contain only the paths that satisfy the prerequiste condition
     # i.e restaurant must be visited before customer
 
     for path in permutations(nodes):
@@ -93,9 +89,7 @@ def generate_valid_paths(graph):
 
 
 def is_valid_path(path):
-    visited = (
-        set()
-    )  # Keep track of visited nodes to see if a prerequiste node has been visited
+    visited = set()  # Keep track of visited nodes to see if a prerequiste node has been visited
     if path[0].data.get("type") != "start":
         return False
 
