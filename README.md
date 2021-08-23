@@ -21,6 +21,9 @@ The problem is best represented as an weighted undirected graph where the locati
 - The distance and time to travel will be calculated using Haversine formula as suggested
 - The actual locations are assumed to be inputs
 
+A naive solution would be to generate all possible paths and check which has the minimum sum of weights.
+Ideally, the path will be a minimum spanning tree generated under the condition that no customer node is visited before corresponding restaurant node is visited
+
 ## Code
 The example code is in `main.py`. Run using
 
