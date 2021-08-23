@@ -3,16 +3,18 @@ from typing import Iterable
 
 Edge = namedtuple("Edge", ["node", "weight"])
 
+
 class Node:
     def __init__(self, id: str, data=None) -> None:
         self.id = id
-        self.data = data # Any data associated with the node
+        self.data = data  # Any data associated with the node
 
     def __repr__(self) -> str:
         return f"Node({self.id})"
 
     def __str__(self) -> str:
         return f"Node({self.id})"
+
 
 class Graph:
     def __init__(self, nodes={}) -> None:
@@ -48,15 +50,13 @@ class Graph:
             edges = self.edges.get(n)
             if edges:
                 for e in edges:
-                    if e.node == nodes[i-1]:
+                    if e.node == nodes[i - 1]:
                         total_cost += e.weight
-        
-        return total_cost
 
+        return total_cost
 
     def __repr__(self) -> str:
         return f"DirectedGraph({repr(self.nodes)})"
 
     def __str__(self) -> str:
         return f"DirectedGraph({repr(self.nodes)})"
-

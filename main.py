@@ -1,6 +1,8 @@
 # from graph import DirectedGraph, Node
-from lib import Customer, Location, Order, Restaurant, find_optimal_delivery_path, generate_graph
 from pprint import pprint
+
+from lib import (Customer, Location, Order, Restaurant,
+                 find_optimal_delivery_path)
 
 start_location = Location(75.40322081327923, 13.222724042514256)
 R1 = Restaurant("R1", Location(74.67418178783742, 13.123723901464716))
@@ -12,4 +14,4 @@ o1 = Order(C1, R1, 0.2)
 o2 = Order(C2, R2, 0.3)
 
 
-pprint(find_optimal_delivery_path(start_location, [o1,o2]))
+pprint(find_optimal_delivery_path(start_location, [o1, o2]))
