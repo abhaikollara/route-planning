@@ -52,6 +52,8 @@ class Graph:
                 for e in edges:
                     if e.node == nodes[i - 1]:
                         total_cost += e.weight
+            else:
+                total_cost += float("inf")
 
         return total_cost
 
