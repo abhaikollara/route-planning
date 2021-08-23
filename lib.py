@@ -13,6 +13,11 @@ class Customer:
         self.location = location
 
 class StartLocation:
+    '''
+        Wrapper class for start location
+        which is neither a restaurant or a customer
+    '''
+
     def __init__(self, location: Location) -> None:
         self.location = location
 
@@ -22,8 +27,11 @@ class Order:
         self.restaurant = restaurant
         self.prep_time = prep_time
 
-
 def generate_graph(start_position: Location, orders: Iterable[Order]) -> Graph:
+    '''
+        Given a start position and a list of orders, generate a weighted graph
+    '''
+
     g = Graph()
 
     for order in orders:
@@ -46,6 +54,7 @@ def generate_graph(start_position: Location, orders: Iterable[Order]) -> Graph:
 
     return g
 
+# This should be implement the actual solution
 def find_optimal_delivery_path(start_position: Location, order_list: Iterable[Order]) -> Iterable[Location]:
     g = generate_graph(start_position, order_list)
 

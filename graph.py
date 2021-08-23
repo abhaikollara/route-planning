@@ -41,7 +41,7 @@ class Graph:
 class Node:
     def __init__(self, id: str, data=None) -> None:
         self.id = id
-        self.data = data
+        self.data = data # Any data associated with the node
 
     def __repr__(self) -> str:
         return f"Node({self.id})"

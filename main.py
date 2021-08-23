@@ -11,6 +11,7 @@ C2 = Customer("C2", Location(74.27418174483742, 13.423623901464716))
 o1 = Order(C1, R1, 0.2)
 o2 = Order(C2, R2, 0.3)
 
+# Generate the graph
 g = generate_graph(start_location, [o1, o2])
 pprint(g)
 pprint(g.edges)

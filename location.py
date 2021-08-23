@@ -13,7 +13,11 @@ class Location:
 
 
 def haversine_distance(loc1: Location, loc2: Location) -> float:
-    # Refer: https://community.esri.com/t5/coordinate-reference-systems-blog/distance-on-a-sphere-the-haversine-formula/ba-p/902128
+    '''
+        Calculates the haversine distance between two locations
+        Refer: https://community.esri.com/t5/coordinate-reference-systems-blog/distance-on-a-sphere-the-haversine-formula/ba-p/902128
+    '''
+
     lat1, lon1 = Decimal(loc1.x), Decimal(loc1.y)
     lat2, lon2 = Decimal(loc2.x), Decimal(loc2.y)
 
@@ -38,4 +42,8 @@ Kmph = float
 
 
 def travel_time(loc1: Location, loc2: Location, avg_speed: Kmph) -> float:
-    return haversine_distance(loc1, loc2) / avg_speed  # Returns number of hours
+    '''
+        Returns the time required to travel between two Locations
+        in hours given an average travel speed in km/h
+    '''
+    return haversine_distance(loc1, loc2) / avg_speed
