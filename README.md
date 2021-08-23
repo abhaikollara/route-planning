@@ -22,12 +22,14 @@ The problem is best represented as an weighted undirected graph where the locati
 - The actual locations are assumed to be inputs
 
 A naive solution would be to generate all possible paths and check which has the minimum sum of weights.
-Ideally, the path will be a minimum spanning tree generated under the condition that no customer node is visited before corresponding restaurant node is visited
+- Generate all possible permutations of nodes in the graph
+- Eliminate everything that doesn't satisfy the "restaurant-visited-before-customer" condition
+- Calculate the path costs for the generated paths and pick the least cost
 
-The naive solution will work for a case with only two orders. The possible combinations are few and can be easily generated
-- R1 -> C1 -> R2 -> C2
-- R1 -> R2 -> C1 -> C2
-- R1 -> R2 -> C2 -> C1
+Ideally, the path will be a minimum spanning tree generated under the condition that no customer node is visited before corresponding restaurant node is visited
+The naive solution will work for a case with few orders.
+
+**Limitation**: Have not accounted for the meal preparation time as given in the problem statement.
 
 ## Code
 The example code is in `main.py`. Run using
