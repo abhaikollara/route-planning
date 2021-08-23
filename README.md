@@ -24,6 +24,11 @@ The problem is best represented as an weighted undirected graph where the locati
 A naive solution would be to generate all possible paths and check which has the minimum sum of weights.
 Ideally, the path will be a minimum spanning tree generated under the condition that no customer node is visited before corresponding restaurant node is visited
 
+The naive solution will work for a case with only two orders. The possible combinations are few and can be easily generated
+- R1 -> C1 -> R2 -> C2
+- R1 -> R2 -> C1 -> C2
+- R1 -> R2 -> C2 -> C1
+
 ## Code
 The example code is in `main.py`. Run using
 
